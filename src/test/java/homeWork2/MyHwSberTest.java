@@ -40,6 +40,7 @@ public class MyHwSberTest extends AbstractTest {
          */
         switchWindowByXpath("//*[@data-pid='SBRF-TEXT-2247407']//a[contains(text(), 'Оформить онлайн')]");
 
+
         /**
          * 6. На вкладке – Выбор полиса  выбрать сумму страховой защиты – Минимальная
          * 7. Нажать Оформить

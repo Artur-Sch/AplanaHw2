@@ -5,6 +5,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -61,7 +62,14 @@ public class AbstractTest {
      */
     public void switchWindowByXpath(String stringXpath) {
         Set<String> oldWindowsSet = driver.getWindowHandles();
-        findElementXpath(stringXpath).click();
+        /**
+         * прикрутил JS click, но у меня и без него отрабатывает
+         */
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();", findElementXpath(stringXpath));
+
+//      findElementXpath(stringXpath).click();
+
         String newWindowHandle = (new WebDriverWait(driver, 10))
                 .until((ExpectedCondition<String>) driver -> {
                     Set<String> newWindowsSet = driver.getWindowHandles();
