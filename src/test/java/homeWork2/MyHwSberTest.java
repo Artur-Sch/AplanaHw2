@@ -1,11 +1,12 @@
 package homeWork2;
 
 
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.Keys;
+
 
 public class MyHwSberTest extends AbstractTest {
 
@@ -71,11 +72,21 @@ public class MyHwSberTest extends AbstractTest {
         findElementXpath("//*[@name='issuePlace']").sendKeys("ОУФМС МСК");
         checkErrorWithAttribute("//*[@name='issuePlace']", "ОУФМС МСК");
 
-        setDate("//*[@id='views']/section/form/section/section[1]/div/insured-input/div/fieldset[4]/div/img", "6", "3", "1978");
-        setDate("//*[@id='views']/section/form/section/section[2]/div/fieldset[7]/div/img", "15", "4", "1993");
-        setDate("//*[@id='views']/section/form/section/section[3]/div/fieldset[2]/div/img", "21", "6", "2010");
 
+        //TODO я реально не понимаю почему теперь отрабатывает и всё работает
+        /**
+         * Если работать не будет раскомментируй код ниже)
+         */
+        findElementXpath("//*[@name='insured0_birthDate']").sendKeys("06.03.1978" + Keys.TAB);
         driver.switchTo().activeElement();
+        findElementXpath("//*[@name='issueDate']").sendKeys("21.06.2010" + Keys.TAB);
+        driver.switchTo().activeElement();
+        findElementXpath("//*[@name='birthDate']").sendKeys("15.04.1993" + Keys.TAB);
+        driver.switchTo().activeElement();
+
+//        setDate("//*[@id='views']/section/form/section/section[1]/div/insured-input/div/fieldset[4]/div/img", "6", "3", "1978");
+//        setDate("//*[@id='views']/section/form/section/section[2]/div/fieldset[7]/div/img", "15", "4", "1993");
+//        setDate("//*[@id='views']/section/form/section/section[3]/div/fieldset[2]/div/img", "21", "6", "2010");
 
         checkErrorWithAttribute("//*[@name='insured0_birthDate']", "06.03.1978");
         checkErrorWithAttribute("//*[@name='birthDate']", "15.04.1993");
